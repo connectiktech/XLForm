@@ -133,7 +133,12 @@ CGFloat XLFormRowInitialHeight = -2;
                 NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:folderName];
                 bundle = [NSBundle bundleWithPath:bundlePath];
             } else {
-                bundle = [NSBundle bundleForClass:NSClassFromString(cellClass)];
+                Class class = NSClassFromString(cellClass);
+                if (class == nil) {
+                    bundle = [NSBundle mainBundle];
+                } else {
+                    bundle = [NSBundle bundleForClass:class];
+                }
                 cellResource = cellClassString;
             }
             NSParameterAssert(bundle != nil);
