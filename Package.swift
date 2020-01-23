@@ -25,7 +25,7 @@ let package = Package(
             name: "XLForm",
             dependencies: []),
         .testTarget(
-            name: "XLFormTests",
+            name: "XLForm Tests",
             dependencies: ["XLForm"]),
     ]
 )
